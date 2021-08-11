@@ -6,7 +6,7 @@ URL = f"https://kr.indeed.com/jobs?q=python&l=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%
 
 
 def get_last_pages():
-	resul = requests.get(URL)
+	resul = requests.get(URL, stream=True)
 	soup = BeautifulSoup(resul.text, "html.parser")
 	pagination = soup.find("div", {"class": "pagination"})
 	links = pagination.find_all('a')
